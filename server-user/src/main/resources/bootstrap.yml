@@ -1,0 +1,46 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://hxh:hxh@localhost:8761/eureka/
+#spring:
+#  application:
+#    name: product
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: CONFIG
+#      profile: dev
+server:
+  port: 8002
+spring:
+  application:
+    name: user
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#    username: huangxuhuai
+#    password: huangxuhuai
+#    url: jdbc:mysql://127.0.0.1:3306/cherouser?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/ssotest?characterEncoding=utf-8&useSSL=false
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    generate-ddl: true
+    #    create (创建新的实体表，会将原来的删除)/ update（更新）
+    #     create-drop(程序停止，删表)/ none (默认什么也不做)
+    #     validate(验证类的属性是否和表结构一致，否则保存)
+security:
+  oauth2:
+    resource:
+      filter-order: 3
