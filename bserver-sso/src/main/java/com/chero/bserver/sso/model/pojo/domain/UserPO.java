@@ -43,7 +43,7 @@ public class UserPO extends BaseWithoutIdPO implements UserDetails {
     private Integer locked;
 
     @Transient
-    private Set<RolePO> roles;
+    private List<RolePO> roles;
 
     public UserPO() {
 //        this.userId = "Chero" + String.valueOf(System.currentTimeMillis() / 1000) + "r" + String.valueOf((int) ((Math.random() * 1000)));

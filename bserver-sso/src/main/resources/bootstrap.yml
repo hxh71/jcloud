@@ -1,3 +1,11 @@
 spring:
   profiles:
     active: dev
+  data:
+    jpa:
+      repositories:
+        enabled: true
+jcloud:
+  security:
+    oauth2:
+      jwtSigningKey: JwtChero

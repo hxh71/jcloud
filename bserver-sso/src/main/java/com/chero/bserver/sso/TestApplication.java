@@ -1,7 +1,7 @@
 package com.chero.bserver.sso;
 
 import com.chero.bserver.sso.convert.MenuPO2MenuDTOConverter;
-import com.chero.bserver.sso.model.pojo.domain.MenuDTO;
+import com.chero.bserver.sso.model.pojo.dto.MenuDTO;
 import com.chero.bserver.sso.model.pojo.domain.MenuPO;
 
 import java.util.ArrayList;

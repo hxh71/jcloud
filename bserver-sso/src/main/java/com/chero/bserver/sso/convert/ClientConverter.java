@@ -1,11 +1,8 @@
 package com.chero.bserver.sso.convert;
 
 import com.chero.bserver.sso.model.pojo.domain.ClientPO;
-import com.chero.bserver.sso.model.pojo.domain.MenuDTO;
-import com.chero.bserver.sso.model.pojo.domain.MenuPO;
 import com.chero.bserver.sso.model.pojo.dto.ClientDTO;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 import java.util.Arrays;
@@ -43,6 +40,8 @@ public class ClientConverter extends CheroConverter<ClientPO, ClientDTO>{
         // resourceIds
         String[] resourceIds = StringUtils.split(clientPO.getResourceIds(), ",");
         clientDTO.setResourceIds(Arrays.asList(resourceIds));
+        //不知道什么用
+        clientDTO.setAutoApproveScopes(clientDTO.getScope());
         //不知道什么用
         //        clientDTO.setAutoApproveScopes();
 //        clientDTO.setAdditionalInformation();

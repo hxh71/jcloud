@@ -21,7 +21,7 @@ import java.util.*;
 
 @Slf4j
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDAO userDAO;
@@ -72,23 +72,25 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     public Map<String, Object> getAuthByMobile(String mobile) {
-        Map<String, Object> map = new HashMap<>();
-        UserPO user = userDAO.findByMobile(mobile);
-        if (user != null) {
-            map.put("allRoles", userRoleDAO.findRoleIdByIdUserId(user.getUserId()));
-        }
-        map.put("user", user);
-        return map;
+//        Map<String, Object> map = new HashMap<>();
+//        UserPO user = userDAO.findByMobile(mobile);
+//        if (user != null) {
+//            map.put("allRoles", userRoleDAO.findRoleIdByIdUserId(user.getUserId()));
+//        }
+//        map.put("user", user);
+//        return map;
+        return null;
     }
     @Override
     public UserPO loadUserByUsername(String mobile) throws UsernameNotFoundException {
         UserPO user = userDAO.findByMobile(mobile);
 //        Map<String, Object> map = userService.getAuthByMobile(mobile);
         log.info("【load用户名】={}", mobile);
-        Set<RolePO> roles ;
+        List<RolePO> roles ;
         if (user == null) {
             throw new UsernameNotFoundException("用户" + mobile + "信息不存在！");
         } else {
+//            roles = userRoleDAO.findRoleByUserId(user.getUserId());
             roles = userRoleDAO.findRoleByUserId(user.getUserId());
         }
 

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import static com.chero.bserver.sso.model.pojo.TableName.SYS_ROLE;
@@ -15,9 +16,9 @@ import static com.chero.bserver.sso.model.pojo.TableName.SYS_ROLE;
 @SQLDelete(sql = "update " + SYS_ROLE + " set deleted = 1 where id = ?")
 @Where(clause = "deleted = 0")
 @NoArgsConstructor
-public class RolePO extends BasePO {
+public class RolePO extends BaseWithoutIdPO {
 
-
+	@Id
 	private String roleId;
 
 	private String title;

@@ -1,5 +1,6 @@
-package com.chero.bserver.sso.model.pojo.domain;
+package com.chero.bserver.sso.model.pojo.dto;
 
+import com.chero.bserver.sso.model.pojo.domain.BaseWithoutIdPO;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;

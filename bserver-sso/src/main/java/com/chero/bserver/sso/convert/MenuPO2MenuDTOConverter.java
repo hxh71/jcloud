@@ -1,6 +1,6 @@
 package com.chero.bserver.sso.convert;
 
-import com.chero.bserver.sso.model.pojo.domain.MenuDTO;
+import com.chero.bserver.sso.model.pojo.dto.MenuDTO;
 import com.chero.bserver.sso.model.pojo.domain.MenuPO;
 
 /**
