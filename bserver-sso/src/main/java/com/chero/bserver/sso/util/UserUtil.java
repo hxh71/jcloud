@@ -7,9 +7,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
  */
 public class UserUtil {
     public static Object getCurrentUser() {
-        System.out.println("***************************************************************************");
-        System.out.println("我要看一下");
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass().getName());
-        return SecurityContextHolder.getContext().getAuthentication();
+
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+    public static Object getAuthorities() {
+
+        return SecurityContextHolder.getContext().getAuthentication().getAuthorities();
     }
 }

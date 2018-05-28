@@ -1,6 +1,8 @@
 package com.chero.bserver.sso.config;
 
 
+import com.chero.bserver.sso.enhancer.TokenJwtEnhancer;
+import com.chero.bserver.sso.model.service.UserService;
 import com.chero.bserver.sso.properties.CustomSecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -9,6 +11,9 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.DefaultUserAuthenticationConverter;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -55,6 +60,8 @@ public class TokenStoreConfig {
 
         @Autowired
         private CustomSecurityProperties customSecurityProperties;
+        @Autowired
+        private UserService userService;
 
         /**
          * @return
@@ -71,6 +78,11 @@ public class TokenStoreConfig {
         public JwtAccessTokenConverter jwtAccessTokenConverter(){
             JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
             converter.setSigningKey(customSecurityProperties.getOauth2().getJwtSigningKey());
+            DefaultAccessTokenConverter accessTokenConverter = new DefaultAccessTokenConverter();
+            DefaultUserAuthenticationConverter userTokenConverter = new DefaultUserAuthenticationConverter();
+            userTokenConverter.setUserDetailsService(userService); // 解析UserDetail
+            accessTokenConverter.setUserTokenConverter(userTokenConverter);
+            converter.setAccessTokenConverter(accessTokenConverter);
             return converter;
         }
 
@@ -84,7 +96,5 @@ public class TokenStoreConfig {
         }
 
     }
-
-
 
 }

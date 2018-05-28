@@ -26,5 +26,5 @@ public class ClientPO extends BasePO {
     private String scope;
     private String authorizedGrantTypes;
     private String authorities;
-    private Integer locked;
+    private Boolean locked;
 }

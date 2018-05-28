@@ -26,9 +26,9 @@ public class ClientConverter extends CheroConverter<ClientPO, ClientDTO>{
         // 是否被锁
         clientDTO.setLocked(clientPO.getLocked());
         // accessToken时效
-        clientDTO.setAccessTokenValiditySeconds(9999);
+        clientDTO.setAccessTokenValiditySeconds(99999);
         // refreshToken时效
-        clientDTO.setRefreshTokenValiditySeconds(9999);
+        clientDTO.setRefreshTokenValiditySeconds(99999);
         // 授权方式（密码 ， 授权码...）
         String[] authorizedGrantTypes = StringUtils.split(clientPO.getAuthorizedGrantTypes(), ",");
         clientDTO.setAuthorizedGrantTypes(Arrays.asList(authorizedGrantTypes));

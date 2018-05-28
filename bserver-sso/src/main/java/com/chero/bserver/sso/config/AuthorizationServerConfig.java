@@ -1,6 +1,7 @@
 package com.chero.bserver.sso.config;
 
 //import com.chero.bserver.sso.service.ClientDetailsServiceImpl;
+import com.chero.bserver.sso.model.service.ClientService;
 import com.chero.bserver.sso.model.service.UserService;
 import com.chero.bserver.sso.model.service.impl.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,22 +35,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
      * 注入authenticationManager
      * 来支持 password grant type
      */
-    @Autowired
-    private AuthenticationManager authenticationManager;
+
 
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
+
     @Autowired
-    private UserDetailsService userDetailsService;
+    private ClientService clientService;
 
-    @Autowired(required = false)
-    private JwtAccessTokenConverter jwtAccessTokenConverter;
-
-    @Autowired(required = false)
-    private TokenEnhancer jwtTokenEnhancer;
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(new ClientServiceImpl());
+        clients.withClientDetails(clientService);
     }
 
     @Override
@@ -59,12 +55,26 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 //        security.tokenKeyAccess("isAuthenticated()");
     }
 
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired(required = false)
+    private JwtAccessTokenConverter jwtAccessTokenConverter;
+
+    @Autowired(required = false)
+    private TokenEnhancer jwtTokenEnhancer;
+    @Autowired
+    private TokenStore tokenStore;
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
-                .tokenStore(jwtTokenStore()).accessTokenConverter(jwtAccessTokenConverter())
-                .userDetailsService(userDetailsService);  // 这个不加 在使用 refresh_token时会报错找不到UserDetailService
+                .tokenStore(tokenStore)
+                .userDetailsService(userService)
+                .setClientDetailsService(clientService);
+                /**/
+//                .tokenServices();  // 这个不加 在使用 refresh_token时会报错找不到UserDetailService
         if (jwtAccessTokenConverter != null && jwtTokenEnhancer != null) {
             TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
             List<TokenEnhancer> enhancers = new ArrayList<>();
@@ -75,15 +85,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         }
     }
 
-    @Bean
-    public TokenStore jwtTokenStore() {
-        return new JwtTokenStore(jwtAccessTokenConverter());
-    }
 
-    @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("JwtChero");
-        return converter;
-    }
+
 }

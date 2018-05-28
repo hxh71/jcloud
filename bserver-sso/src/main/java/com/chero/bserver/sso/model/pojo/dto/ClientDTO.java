@@ -18,6 +18,6 @@ import java.util.*;
 @NoArgsConstructor
 public class ClientDTO extends BaseClientDetails{
 
-    private Integer locked;
+    private Boolean locked;
 
 }

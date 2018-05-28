@@ -26,38 +26,6 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     ClientDAO clientDAO;
 
-
-
-    @Override
-    public ClientDTO getByClientId(String clientId) {
-        ClientPO clientPO = clientDAO.findByClientId(clientId);
-        if (clientPO != null) {
-            return ClientConverter.INSTANCE.convert(clientPO);
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * 根基客户端编号（client_id)查询出客户的信息以及对应的授权内容
-     * @param clientId 客户端id
-     * @return 返回的数据包含有如下内容；
-     * key = client、value = Client的对象，如果不存在则用null;
-     * key = allAuthorities、value = 当Client信息存在时获取授权内容;
-     */
-//    @Override
-//    public ClientAuthDTO get(String clientId) {
-//        ClientAuthDTO clientAuthDTO = new ClientAuthDTO();
-//        ClientPO client = this.clientDAO.findByClientId(clientId);
-//        if (client != null) {
-//            clientAuthDTO.setAllAuthorities(clientAuthoritiesDAO.findAuthoIdByIdClientId(clientId));
-//        }
-//        clientAuthDTO.setClient(client);
-//        return clientAuthDTO;
-//    }
-
-
-
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         ClientPO client = this.clientDAO.findByClientId(clientId);

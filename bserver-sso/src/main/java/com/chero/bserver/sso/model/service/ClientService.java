@@ -8,5 +8,4 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
  * Created by hxh on 2018/5/8.
  */
 public interface ClientService extends ClientDetailsService{
-    ClientDTO getByClientId(String clientId);
 }

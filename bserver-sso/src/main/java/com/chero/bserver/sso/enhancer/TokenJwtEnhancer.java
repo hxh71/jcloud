@@ -30,13 +30,12 @@ public class TokenJwtEnhancer implements org.springframework.security.oauth2.pro
         info.put("company", "chero");
 
         String mobile = authentication.getName();
-        String userId = String.valueOf(userService.loadUserByUsername(mobile));
+//        String userId = String.valueOf(userService.loadUserByUsername(mobile));
 //        UserInfoDO userInfoDO = userInfoService.findMainByUserId(userId);
 
-        info.put("userId", userId);
+//        info.put("userId", userId);
         info.put("status", new Integer(0));
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
-
         return accessToken;
     }
 }
