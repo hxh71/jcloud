@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
-@Configuration
+//@Configuration
 public class CustomDateEditorConfiguration {
 
     /**
