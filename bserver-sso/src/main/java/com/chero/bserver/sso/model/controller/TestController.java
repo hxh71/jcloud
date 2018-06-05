@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    @GetMapping("user")
+    @GetMapping("/user")
     public Object getUser() {
         return UserUtil.getCurrentUser();
     }
-    @GetMapping("all")
+    @GetMapping("/all")
     public Object getAll() {
         return SecurityContextHolder.getContext().getAuthentication() ;
     }

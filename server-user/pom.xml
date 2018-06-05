@@ -43,6 +43,14 @@
             <groupId>com.chero</groupId>
             <artifactId>common-component</artifactId>
         </dependency>
+       <!-- <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>com.chero</groupId>
+            <artifactId>client-user</artifactId>
+        </dependency>
 
     </dependencies>
 

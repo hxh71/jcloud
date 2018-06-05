@@ -10,10 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by hxh on 2018/5/11.

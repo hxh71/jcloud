@@ -19,18 +19,12 @@ import java.util.List;
 /**
  * Created by hxh on 2018/3/24.
  */
-@FeignClient(name = "user")
+@FeignClient(name = "sso")
 //, fallbackFactory = UserClient.UserClientFallback.class
 public interface UserClient {
 
-    /**
-     * 根据手机号查询用户
-     * @param mobile
-     * @return
-     */
-    @GetMapping("users/mobile/{mobile}}")
-    UserDO getByUsername(@PathVariable String mobile); // 一定要加上value，跟springmvc不一样
-
-
-
+    @GetMapping("/test/user")
+    String getTestUser(); // 一定要加上value，跟springmvc不一样
+    @GetMapping("/test/all")
+    Object getTestAll(); // 一定要加上value，跟springmvc不一样
 }

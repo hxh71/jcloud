@@ -15,7 +15,7 @@ server:
   port: 8002
 spring:
   application:
-    name: user
+    name: test
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
 #    username: huangxuhuai
@@ -40,7 +40,7 @@ spring:
     #    create (创建新的实体表，会将原来的删除)/ update（更新）
     #     create-drop(程序停止，删表)/ none (默认什么也不做)
     #     validate(验证类的属性是否和表结构一致，否则保存)
-security:
-  oauth2:
-    resource:
-      filter-order: 3
+#security:
+#  oauth2:
+#    resource:
+#      filter-order: 3

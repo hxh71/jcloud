@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -50,6 +51,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security.tokenKeyAccess("permitAll()");  // /oauth/token_key 输入client信息从这个接口中获取  如果不设置默认是denyAll()为关闭
+                                                    // {"alg": "HMACSHA256",
+                                                    // "value": "JwtChero"}
+        security.tokenKeyAccess("isAuthenticated()");
 //        security.
         // 我要访问我的认证服务器tokenkey时 需要身份认证
 //        security.tokenKeyAccess("isAuthenticated()");
@@ -68,6 +73,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private TokenStore tokenStore;
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        if (authenticationManager instanceof OAuth2AuthenticationManager) {
+            System.out.println(true);
+        }
         endpoints
                 .authenticationManager(authenticationManager)
                 .tokenStore(tokenStore)
@@ -84,6 +92,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             endpoints.tokenEnhancer(enhancerChain).accessTokenConverter(jwtAccessTokenConverter);
         }
     }
+
 
 
 
