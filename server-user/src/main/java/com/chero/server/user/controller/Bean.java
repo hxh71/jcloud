@@ -1,5 +1,6 @@
 package com.chero.server.user.controller;
 
+import com.chero.server.user.annotation.TimestampFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class Bean {
 //    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
 //    @DateTimeFormat(pattern = "SS")
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @TimeS
+    @TimestampFormat
     private Date date;
   //  请求的Content-Type需要是application/json
 //    spring的controller的参数要用@RequestBody
