@@ -16,7 +16,6 @@ import java.lang.annotation.*;
 public @interface TimestampFormat {
 
     LENGTH value() default LENGTH.MILLISECOND;
-
     enum LENGTH {
 
         /**

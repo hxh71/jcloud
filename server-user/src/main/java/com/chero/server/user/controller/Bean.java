@@ -18,7 +18,8 @@ public class Bean {
 //    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
 //    @DateTimeFormat(pattern = "SS")
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @TimestampFormat
+    @TimestampFormat(value = TimestampFormat.LENGTH.SECOND)
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date date;
   //  请求的Content-Type需要是application/json
 //    spring的controller的参数要用@RequestBody

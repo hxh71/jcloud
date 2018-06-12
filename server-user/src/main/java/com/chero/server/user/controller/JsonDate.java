@@ -17,7 +17,7 @@ import java.util.Date;
 /**
  * Created by hxh on 2018/6/4.
  */
-@JsonComponent
+//@JsonComponent
 public class JsonDate {
 //    public static class Serializer extends JsonSerializer<Date> {
 //        @Override
@@ -27,20 +27,18 @@ public class JsonDate {
 //            jsonGenerator.writeString(formattedDate);
 //        }
 //    }
-//    @JsonComponent
-//    public static class Deserializer extends JsonDeserializer<Date> {
-//    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//
-//    @Override
-//        public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-//            Date date = null;
-//            try {
-//                date = sdf.parse(jsonParser.getText());
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//            return date;
-//        }
-//    }
+    public static class Deserializer extends JsonDeserializer<Date> {
+        private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        @Override
+        public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+            Date date = null;
+            try {
+                date = sdf.parse(jsonParser.getText());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return date;
+        }
+    }
 
 }

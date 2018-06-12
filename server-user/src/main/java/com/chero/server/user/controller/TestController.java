@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -29,9 +32,19 @@ public class TestController {
 		return userClient.getTestAll();
 	}
 	@RequestMapping("/date")
-	public Object getDate(Bean bean) {
+	public Object getDate(Bean bean) throws ParseException {
 		Map<String, Object> map = new HashMap<>();
 		map.put("date", bean.getDate());
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = simpleDateFormat.parse("1969-01-01");
+		System.out.println(date.getTime());
+//		return date.getTime();
 		return bean;
+	}
+
+	@RequestMapping("/list")
+	public Object getList(@RequestBody DataBean data) throws ParseException {
+//		list.add()
+		return data;
 	}
 }
