@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 	}
 	public UserDO getByUsername(String username) throws Exception{
 
-		UserDO userDO =  userRepository.findByUsername(username);
+		UserDO userDO =  userRepository.findByMobile(username);
 		if (userDO != null) {
 			return userDO;
 		} else {

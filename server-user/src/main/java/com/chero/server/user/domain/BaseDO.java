@@ -46,7 +46,7 @@ class BaseDO{
     /**
      * 删除标志
      */
-    protected Integer deleteFlag = 0;
+    protected Integer deleted = 0;
     /**
      * 备注
      */

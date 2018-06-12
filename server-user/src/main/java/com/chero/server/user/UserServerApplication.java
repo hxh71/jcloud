@@ -1,6 +1,7 @@
 package com.chero.server.user;
 
 import com.chero.server.user.convert.WxMappingJackson2HttpMessageConverter;
+import com.google.gson.JsonObject;
 import feign.codec.Decoder;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
