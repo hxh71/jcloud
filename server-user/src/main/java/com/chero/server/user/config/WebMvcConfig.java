@@ -16,5 +16,4 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addFormatterForFieldAnnotation(new TimestampFormatAnnotationFormatterFactory());
         super.addFormatters(registry);
     }
-
 }

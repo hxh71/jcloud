@@ -10,7 +10,9 @@ import org.hibernate.annotations.GenericGenerator;
 @Data
 @Entity
 @Table(name = "db_order_detail")
-@GenericGenerator(name = "uuid", strategy = "uuid")
+//@GenericGenerator(name = "uuid", strategy = "uuid")
+@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator") // 代替原来的uuid 防止 warn
+// Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
 public class UserDO extends BaseDO{
 	@Id
 	@GeneratedValue(generator = "uuid")

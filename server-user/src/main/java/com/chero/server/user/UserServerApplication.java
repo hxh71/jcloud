@@ -6,7 +6,9 @@ import feign.codec.Decoder;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -19,6 +21,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.filter.RequestContextFilter;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,7 +33,9 @@ import java.util.List;
 @EnableJpaAuditing
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages= {"com.chero.client.user"})
-@SpringBootApplication(scanBasePackages = {"com.chero"})
+@SpringBootApplication(scanBasePackages = {"com.chero"}, exclude = {RepositoryRestMvcAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude = RepositoryRestMvcAutoConfiguration.class) 防止data-rest注入/{repository}/{id}/{property}],methods=[GET]，作用同上
+
 public class UserServerApplication {
 	@Autowired
 	private RestTemplateBuilder builder;

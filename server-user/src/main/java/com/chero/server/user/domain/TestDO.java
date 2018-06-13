@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "test")
-@GenericGenerator(name = "uuid", strategy = "uuid")
+@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 @SQLDelete(sql = "update test set deleted = 1 where id = ?")
 @Where(clause = "deleted = 0")
 public class TestDO extends BaseDO{
