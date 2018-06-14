@@ -13,7 +13,7 @@ import java.util.Date;
 @Aspect
 @Component
 public class TimeAspect {
-    @Around("execution(* com.imooc.web.controller.UserController.*(..))")
+    @Around("execution(* com.chero.server.user.controller.TestController.*(..))")
     public Object handleControllerMethod(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("切片开始");
 

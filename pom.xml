@@ -50,6 +50,7 @@
         <client-user.version>0.0.1-SNAPSHOT</client-user.version>
         <client-report.version>0.0.1-SNAPSHOT</client-report.version>
         <commons-lang.version>2.6</commons-lang.version>
+        <log4jdbc.version>1.2</log4jdbc.version>
         <feign-httpclient.version>8.18.0</feign-httpclient.version>
         <gson.version>2.3.1</gson.version>
     </properties>
@@ -108,13 +109,28 @@
                 <artifactId>commons-lang</artifactId>
                 <version>${commons-lang.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.googlecode.log4jdbc</groupId>
+                <artifactId>log4jdbc</artifactId>
+                <version>${log4jdbc.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+         <!--   <exclusions>&lt;!&ndash; 去掉默认配置 &ndash;&gt;
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>-->
         </dependency>
+      <!--  <dependency> &lt;!&ndash; 引入log4j2依赖 &ndash;&gt;
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>-->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>

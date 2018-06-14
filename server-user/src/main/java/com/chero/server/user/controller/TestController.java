@@ -52,6 +52,11 @@ public class TestController {
 //		list.add()
         return data;
     }
+    @RequestMapping("/list2")
+    public Object getList2(DataBean data) throws ParseException {
+//		list.add()
+        return data;
+    }
 
     @Autowired
     private TestRepository testRepository;
@@ -60,5 +65,23 @@ public class TestController {
     public Object daoSave(TestDO testDO) throws ParseException {
 
         return testRepository.save(testDO);
+    }
+    @RequestMapping("/daoSave2")
+    public Object daoSave2(@RequestBody TestDO testDO) throws ParseException {
+
+        return testRepository.save(testDO);
+    }
+    @RequestMapping("/findDao")
+    public Object findDao() throws ParseException {
+
+        return testRepository.findOne("6d129201-dec1-46cb-928b-a79ae1acd573");
+    }
+    @RequestMapping("/likeDao")
+    public Object like(String[] str) throws ParseException {
+//        for (int i = 0; i < str.length; i++) {
+//            str[i] = '%' + str[i] + '%';
+//        }
+
+        return testRepository.findAllBySLike(str);
     }
 }

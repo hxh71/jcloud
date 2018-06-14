@@ -12,10 +12,20 @@ import java.util.List;
  */
 @Data
 public class DataBean {
+
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @TimestampFormat
-    private Date[] data;
+    private List<Date> d1;
+
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @TimestampFormat
-    private List<Date> data1;
+    private Date[] d2;
+
+//    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+//    @TimestampFormat
+    private List<Long> l1;
+    private Long[] l2;
+
+    private List<String> s1;
+    private String[] s2;
 }

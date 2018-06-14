@@ -1,6 +1,7 @@
 package com.chero.server.user.config;
 
 import com.chero.server.user.annotation.TimestampFormatAnnotationFormatterFactory;
+import com.chero.server.user.interceptor.TimeInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
