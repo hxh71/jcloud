@@ -1,0 +1,41 @@
+# 生产
+eureka:
+  client:
+    service-url:
+      defaultZone: http://hxh:hxh@localhost:8761/eureka/
+server:
+  port: 7004
+spring:
+  application:
+    name: sso
+  redis:
+    host: localhost
+    port: 6379
+    password: hxh
+    timeout: 1000
+    database: 0
+    pool:
+      max-active: 10
+      max-idle: 8
+      max-wait: 100
+      min-idle: 2
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#    username: huangxuhuai
+#    password: huangxuhuai
+#    url: jdbc:mysql://127.0.0.1:3306/cherouser?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/ssotest?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    #    create (创建新的实体表，会将原来的删除)/ update（更新）
+    #     create-drop(程序停止，删表)/ none (默认什么也不做)
+    #     validate(验证类的属性是否和表结构一致，否则保存)
+security:
+  oauth2:
+    resource:
+      filter-order: 3
