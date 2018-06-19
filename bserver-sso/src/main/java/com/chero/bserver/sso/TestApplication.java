@@ -3,6 +3,7 @@ package com.chero.bserver.sso;
 import com.chero.bserver.sso.convert.MenuPO2MenuDTOConverter;
 import com.chero.bserver.sso.model.pojo.dto.MenuDTO;
 import com.chero.bserver.sso.model.pojo.domain.MenuPO;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,6 @@ import java.util.List;
 /**
  * Created by hxh on 2018/4/4.
  */
-
 public class TestApplication {
 
     public static void main(String[] args) {

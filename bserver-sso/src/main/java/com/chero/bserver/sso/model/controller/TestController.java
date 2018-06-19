@@ -6,6 +6,7 @@ import com.chero.bserver.sso.model.repository.ClientDAO;
 import com.chero.bserver.sso.model.repository.UserDAO;
 import com.chero.bserver.sso.model.service.UserService;
 import com.chero.bserver.sso.util.UserUtil;
+import com.chero.client.test.TestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
+    @Autowired
+    private TestClient testClient;
     @GetMapping("/user")
     public Object getUser() {
         return UserUtil.getCurrentUser();
@@ -28,5 +31,9 @@ public class TestController {
     @GetMapping("/all")
     public Object getAll() {
         return SecurityContextHolder.getContext().getAuthentication() ;
+    }
+    @GetMapping("/exception")
+    public Object testFeignException() {
+        return testClient.testException() ;
     }
 }

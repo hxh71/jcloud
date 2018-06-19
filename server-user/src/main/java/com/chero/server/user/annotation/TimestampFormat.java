@@ -1,6 +1,8 @@
 package com.chero.server.user.annotation;
 
 
+import org.springframework.core.annotation.AliasFor;
+
 import java.lang.annotation.*;
 
 /**
@@ -15,7 +17,12 @@ import java.lang.annotation.*;
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 public @interface TimestampFormat {
 
+    @AliasFor("length")
     LENGTH value() default LENGTH.MILLISECOND;
+
+    @AliasFor("value")
+    LENGTH length() default LENGTH.MILLISECOND;
+
     enum LENGTH {
 
         /**

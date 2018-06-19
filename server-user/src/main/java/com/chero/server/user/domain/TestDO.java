@@ -28,13 +28,15 @@ public class TestDO extends BaseDO{
 //  @JsonIgnore
 	private String testB;
 //	@Column(columnDefinition="text(255) not null")
-	private String[] s;
+	private String[] s;     //在数据库中存为blob类型
 //	private List<String> s2;
 //	private List<Date> d1;
 	@TimestampFormat
 //	@Column(columnDefinition="text(255) not null")
 	@Column
 	private Date[] d2;
+
+	private Integer i;
 
 
 }
