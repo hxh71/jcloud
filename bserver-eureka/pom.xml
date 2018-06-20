@@ -23,10 +23,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency> -->
-        <dependency>
-            <groupId>com.chero</groupId>
-            <artifactId>common-security-basic</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.chero</groupId>-->
+            <!--<artifactId>common-security-basic</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

@@ -9,16 +9,15 @@ import com.chero.server.user.repository.TestRepository;
 import com.chero.server.user.service.TestService;
 import com.chero.server.user.service.UserService;
 import com.chero.server.user.util.Result;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/test")
@@ -78,8 +77,10 @@ public class TestController {
     }
     @RequestMapping("/countDao")
     public Object countDao(TestDO testDO) {
-
-        return testRepository.count1111();
+        TestDO a = new TestDO();
+        a.setUid("a79ae1acd573");
+        Example<TestDO> example = Example.of(a);
+        return testRepository.count1111(example);
     }
     @RequestMapping("/countDao2")
     public Object countDao2(TestDO testDO) {
@@ -89,13 +90,37 @@ public class TestController {
     @RequestMapping("/countDao3")
     public Object countDao3(TestDO testDO) {
 
-        return testRepository.count3();
+        List<TestRepository.NameOnly> nameOnlyList = testRepository.count3();
+        List<TestRepository.NameOnlyImpl> list = new ArrayList<>();
+        for (TestRepository.NameOnly nameOnly:
+             nameOnlyList) {
+            System.out.println("!!!!!!uid");
+//            System.out.println(nameOnly.getU());
+            TestRepository.NameOnlyImpl nameOnlyImpl = new TestRepository.NameOnlyImpl();
+            BeanUtils.copyProperties(nameOnly, nameOnlyImpl);
+            list.add(nameOnlyImpl);
+        }
+        return nameOnlyList;
     }
 
     @RequestMapping("/findDao")
     public Object findDao() {
 
         return testRepository.findOne("6d129201-dec1-46cb-928b-a79ae1acd573");
+    }
+    @RequestMapping("/findDao1")
+    public Object findDao1() {
+        TestDO testDO = new TestDO();
+        testDO.setUid("6d129201-dec1-46cb-928b-a79ae1acd573");
+        Example<TestDO> example = Example.of(testDO);
+        return testRepository.findOne(example);
+    }
+    @RequestMapping("/findDao2")
+    public Object findDao2() {
+        TestDO testDO = new TestDO();
+        testDO.setUid("6d129201-dec1-46cb-928b-a79ae1acd573");
+        Example<TestDO> example = Example.of(testDO);
+        return testRepository.findOne(example);
     }
 
     @RequestMapping("/likeDao")

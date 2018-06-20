@@ -23,10 +23,10 @@ public class TestDO extends BaseDO{
 
 //	@Column(columnDefinition = "datetime")
 	// long无法转datetime
-	private Long testA;
+	private Long testa;
 
 //  @JsonIgnore
-	private String testB;
+	private String testb;
 //	@Column(columnDefinition="text(255) not null")
 	private String[] s;     //在数据库中存为blob类型
 //	private List<String> s2;
