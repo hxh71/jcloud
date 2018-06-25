@@ -1,7 +1,7 @@
 package com.chero.bserver.sso.convert;
 
-import com.chero.bserver.sso.model.pojo.domain.ClientPO;
-import com.chero.bserver.sso.model.pojo.dto.ClientDTO;
+import com.chero.bserver.sso.model.pojo.po.ClientPO;
+import com.chero.bserver.sso.model.pojo.domain.ClientDO;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.security.core.authority.AuthorityUtils;
 
@@ -10,44 +10,44 @@ import java.util.Arrays;
 /**
  * Created by hxh on 2018/5/23.
  */
-public class ClientConverter extends CheroConverter<ClientPO, ClientDTO>{
+public class ClientConverter extends CheroConverter<ClientPO, ClientDO>{
 
-    private ClientConverter(Class<ClientPO> clazzI, Class<ClientDTO> clazzO) {
+    private ClientConverter(Class<ClientPO> clazzI, Class<ClientDO> clazzO) {
         super(clazzI, clazzO);
     }
 
     @Override
-    protected ClientDTO doForward(ClientPO clientPO) {
-        ClientDTO clientDTO = new ClientDTO();
+    protected ClientDO doForward(ClientPO clientPO) {
+        ClientDO clientDO = new ClientDO();
         // 客户端账号
-        clientDTO.setClientId(clientPO.getClientId());
+        clientDO.setClientId(clientPO.getClientId());
         // 客户端密码
-        clientDTO.setClientSecret(clientPO.getClientSecret());
-        // 是否被锁
-        clientDTO.setLocked(clientPO.getLocked());
+        clientDO.setClientSecret(clientPO.getClientSecret());
+        // 是否能使用（true能使用，false停用）
+        clientDO.setEnabled(clientPO.getEnabled());
         // accessToken时效
-        clientDTO.setAccessTokenValiditySeconds(99999);
+        clientDO.setAccessTokenValiditySeconds(99999);
         // refreshToken时效
-        clientDTO.setRefreshTokenValiditySeconds(99999);
+        clientDO.setRefreshTokenValiditySeconds(99999);
         // 授权方式（密码 ， 授权码...）
         String[] authorizedGrantTypes = StringUtils.split(clientPO.getAuthorizedGrantTypes(), ",");
-        clientDTO.setAuthorizedGrantTypes(Arrays.asList(authorizedGrantTypes));
+        clientDO.setAuthorizedGrantTypes(Arrays.asList(authorizedGrantTypes));
         // 授权权限
-        clientDTO.setAuthorities(AuthorityUtils.commaSeparatedStringToAuthorityList(clientPO.getAuthorities()));
+        clientDO.setAuthorities(AuthorityUtils.commaSeparatedStringToAuthorityList(clientPO.getAuthorities()));
         // scope
         String[] scope = StringUtils.split(clientPO.getScope(), ",");
-        clientDTO.setScope(Arrays.asList(scope));
+        clientDO.setScope(Arrays.asList(scope));
         // resourceIds
         String[] resourceIds = StringUtils.split(clientPO.getResourceIds(), ",");
-        clientDTO.setResourceIds(Arrays.asList(resourceIds));
+        clientDO.setResourceIds(Arrays.asList(resourceIds));
         //不知道什么用
-        clientDTO.setAutoApproveScopes(clientDTO.getScope());
+        clientDO.setAutoApproveScopes(clientDO.getScope());
         //不知道什么用
-        //        clientDTO.setAutoApproveScopes();
-//        clientDTO.setAdditionalInformation();
-//        clientDTO.setRegisteredRedirectUri();
-        return clientDTO;
+        //        clientDO.setAutoApproveScopes();
+//        clientDO.setAdditionalInformation();
+//        clientDO.setRegisteredRedirectUri();
+        return clientDO;
     }
 
-    public static final ClientConverter INSTANCE = new ClientConverter(ClientPO.class, ClientDTO.class);
+    public static final ClientConverter INSTANCE = new ClientConverter(ClientPO.class, ClientDO.class);
 }

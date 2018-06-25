@@ -1,4 +1,4 @@
-package com.chero.bserver.sso.model.pojo.domain.embed;
+package com.chero.bserver.sso.model.pojo.po.embed;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,9 +14,9 @@ import java.io.Serializable;
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClientAuthoritiesPK implements Serializable {
+public class UserRolePK implements Serializable {
 
-    private String clientId;
+    private String userId;
 
-    private String authoId;
+    private String roleId;
 }

@@ -1,6 +1,6 @@
 package com.chero.bserver.sso.model.repository;
 
-import com.chero.bserver.sso.model.pojo.domain.ClientPO;
+import com.chero.bserver.sso.model.pojo.po.ClientPO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

@@ -1,6 +1,6 @@
 //package com.chero.bserver.sso.service;
 //
-//import com.chero.bserver.sso.model.pojo.domain.UserPO;
+//import com.chero.bserver.sso.model.pojo.po.UserPO;
 //import com.chero.bserver.sso.model.service.UserService;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 //package com.chero.bserver.sso.model.repository;
 //
-//import com.chero.bserver.sso.model.pojo.domain.AuthoritiesPO;
-//import com.chero.bserver.sso.model.pojo.domain.ClientAuthoritiesPO;
+//import com.chero.bserver.sso.model.pojo.po.AuthoritiesPO;
+//import com.chero.bserver.sso.model.pojo.po.ClientAuthoritiesPO;
 //import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.jpa.repository.Query;
 //
@@ -19,7 +19,7 @@
 //
 //
 //
-//    @Query(value = "SELECT new com.chero.bserver.sso.model.pojo.domain.AuthoritiesPO(a.authoId , a.title) FROM AuthoritiesPO a, ClientAuthoritiesPO ca " +
+//    @Query(value = "SELECT new com.chero.bserver.sso.model.pojo.po.AuthoritiesPO(a.authoId , a.title) FROM AuthoritiesPO a, ClientAuthoritiesPO ca " +
 //            "WHERE a.authoId = ca.authoId AND ca.clientId = ?1")
 //    Set<AuthoritiesPO> findAuthoritiesByClientId(String clientId);
 //}

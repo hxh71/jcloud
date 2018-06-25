@@ -1,4 +1,4 @@
-package com.chero.bserver.sso.model.pojo.domain;
+package com.chero.bserver.sso.model.pojo.po;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,5 +26,5 @@ public class ClientPO extends BasePO {
     private String scope;
     private String authorizedGrantTypes;
     private String authorities;
-    private Boolean locked;
+    private Boolean enabled;
 }

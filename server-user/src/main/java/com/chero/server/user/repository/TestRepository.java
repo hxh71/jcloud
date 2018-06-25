@@ -20,7 +20,6 @@ import java.util.List;
 public interface TestRepository extends JpaRepository<TestDO, String>, JpaSpecificationExecutor<UserDO> {
 
     TestDO findAllBySLike(String[] str);
-    TestDO find(String[] str);
 
 
     @Query("SELECT " +

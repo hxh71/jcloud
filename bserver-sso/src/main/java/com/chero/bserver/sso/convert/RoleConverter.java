@@ -1,27 +1,25 @@
 package com.chero.bserver.sso.convert;
 
-import com.chero.bserver.sso.model.pojo.domain.RolePO;
-import com.chero.bserver.sso.model.pojo.domain.UserPO;
-import com.chero.bserver.sso.model.pojo.dto.RoleDTO;
-import com.chero.bserver.sso.model.pojo.dto.UserDTO;
+import com.chero.bserver.sso.model.pojo.po.RolePO;
+import com.chero.bserver.sso.model.pojo.domain.RoleDO;
 
 /**
  * Created by hxh on 2018/5/23.
  */
-public class RoleConverter extends CheroConverter<RolePO, RoleDTO>{
+public class RoleConverter extends CheroConverter<RolePO, RoleDO>{
 
 
     @Override
-    protected RoleDTO doForward(RolePO rolePO) {
-        RoleDTO roleDTO = new RoleDTO();
-        roleDTO.setRoleId(rolePO.getRoleId());
-        roleDTO.setTitle(rolePO.getTitle());
-        return roleDTO;
+    protected RoleDO doForward(RolePO rolePO) {
+        RoleDO roleDO = new RoleDO();
+        roleDO.setRoleId(rolePO.getRoleId());
+        roleDO.setTitle(rolePO.getTitle());
+        return roleDO;
     }
 
-    public static final RoleConverter INSTANCE = new RoleConverter(RolePO.class, RoleDTO.class);
+    public static final RoleConverter INSTANCE = new RoleConverter(RolePO.class, RoleDO.class);
 
-    protected RoleConverter(Class<RolePO> clazzI, Class<RoleDTO> clazzO) {
+    protected RoleConverter(Class<RolePO> clazzI, Class<RoleDO> clazzO) {
         super(clazzI, clazzO);
     }
 }

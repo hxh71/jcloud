@@ -1,6 +1,6 @@
 //package com.chero.bserver.sso.model.service.impl;
 //
-//import com.chero.bserver.sso.model.pojo.domain.ClientPO;
+//import com.chero.bserver.sso.model.pojo.po.ClientPO;
 //import com.chero.bserver.sso.model.repository.ClientDAO;
 //import com.chero.bserver.sso.model.service.AuthoritiesService;
 //import org.springframework.beans.factory.annotation.Autowired;

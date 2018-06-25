@@ -1,7 +1,5 @@
 package com.chero.bserver.sso.model.service;
 
-import com.chero.bserver.sso.model.pojo.domain.ClientPO;
-import com.chero.bserver.sso.model.pojo.dto.ClientDTO;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 
 /**

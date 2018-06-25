@@ -1,9 +1,7 @@
-package com.chero.bserver.sso.model.pojo.domain;
+package com.chero.bserver.sso.model.pojo.po;
 
-import com.chero.bserver.sso.model.pojo.domain.embed.UserRolePK;
+import com.chero.bserver.sso.model.pojo.po.embed.UserRolePK;
 import lombok.Data;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

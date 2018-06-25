@@ -1,15 +1,13 @@
-package com.chero.bserver.sso.model.pojo.dto;
+package com.chero.bserver.sso.model.pojo.domain;
 
-import com.chero.bserver.sso.model.pojo.domain.RolePO;
-import com.chero.bserver.sso.model.pojo.domain.UserPO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.Id;
-import javax.persistence.Transient;
 import java.util.*;
 
 /**
@@ -18,7 +16,7 @@ import java.util.*;
  * key = allRoles、 value
  */
 @Data
-public class UserDTO implements UserDetails{
+public class UserDO implements UserDetails{
     @Id
     private String userId;
     /**
@@ -30,7 +28,7 @@ public class UserDTO implements UserDetails{
      */
     private String password;
 
-    private Boolean locked;
+    private Boolean enabled;
     /**
      * 上次修改密码时间
      */
@@ -39,13 +37,14 @@ public class UserDTO implements UserDetails{
      * 上次修改手机号时间
      */
     private Date lastUpdateMobile;
-    private List<RoleDTO> roles;
+    private List<RoleDO> roles;
 
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (RoleDTO role : roles) {
+        for (RoleDO role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getRoleId()));
         }
         return authorities;
@@ -53,27 +52,51 @@ public class UserDTO implements UserDetails{
     }
 
     @Override
+    @JsonIgnore
     public String getUsername() {
         return mobile;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return !locked;
+        return enabled;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        UserDO userDO = (UserDO) o;
+
+        if (!userId.equals(userDO.userId)) return false;
+        return mobile.equals(userDO.mobile);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + userId.hashCode();
+        result = 31 * result + mobile.hashCode();
+        return result;
     }
 }

@@ -1,17 +1,13 @@
-package com.chero.bserver.sso.model.pojo.domain;
+package com.chero.bserver.sso.model.pojo.po;
 
 import com.chero.bserver.sso.util.IDUtil;
 import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 
 import java.util.*;
@@ -37,7 +33,7 @@ public class UserPO extends BaseWithoutIdPO {
      */
     private String password;
 
-    private Boolean locked;
+    private Boolean enabled;
     /**
      * 上次修改密码时间
      */

@@ -1,6 +1,5 @@
 package com.chero.bserver.sso.convert;
 
-import com.chero.bserver.sso.model.pojo.domain.BasePO;
 import com.google.common.base.Converter;
 import com.sun.istack.internal.Nullable;
 import org.springframework.beans.BeanUtils;
@@ -9,6 +8,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,7 +68,7 @@ public abstract class CheroConverter<I , O> extends Converter<I, O> {
      * @param
      * @return
      */
-    public List<O> convert(@Nullable List<I> iList) {
+    public List<O> convert(@Nullable Collection<I> iList) {
 
         return iList.stream().map(e ->
                 convert(e)

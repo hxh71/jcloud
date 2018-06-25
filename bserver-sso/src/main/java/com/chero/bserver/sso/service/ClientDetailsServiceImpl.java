@@ -1,7 +1,7 @@
 //package com.chero.bserver.sso.service;
 //
-//import com.chero.bserver.sso.model.pojo.domain.ClientPO;
-//import com.chero.bserver.sso.model.pojo.dto.ClientAuthDTO;
+//import com.chero.bserver.sso.model.pojo.po.ClientPO;
+//import com.chero.bserver.sso.model.pojo.domain.ClientAuthDTO;
 //import com.chero.bserver.sso.model.service.ClientService;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.beans.factory.annotation.Autowired;
