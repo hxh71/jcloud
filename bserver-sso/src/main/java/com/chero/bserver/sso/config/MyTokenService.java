@@ -36,10 +36,14 @@ public class MyTokenService implements ResourceServerTokenServices {
     @Autowired
     private ClientDetailsService clientDetailsService;
 
+
+
+    @Override
     public OAuth2AccessToken readAccessToken(String accessToken) {
         return tokenStore.readAccessToken(accessToken);
     }
 
+    @Override
     public OAuth2Authentication loadAuthentication(String accessTokenValue) throws AuthenticationException,
             InvalidTokenException {
         OAuth2AccessToken accessToken = tokenStore.readAccessToken(accessTokenValue);

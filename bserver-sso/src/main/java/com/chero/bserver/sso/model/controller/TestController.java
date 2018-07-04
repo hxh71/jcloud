@@ -65,4 +65,8 @@ public class TestController {
 
         return new HashSet<>(userDOList);
     }
+    @GetMapping("/test")
+    public Object aaa() {
+        return "success";
+    }
 }

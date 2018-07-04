@@ -72,6 +72,7 @@
                 <configuration>
                     <!-- 指定该Main Class为全局的唯一入口 -->
                     <mainClass>com.chero.server.user.UserServerApplication</mainClass>
+                    <jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

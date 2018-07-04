@@ -26,7 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hxh on 2018/4/2.
+ *
+ * @author hxh
+ * @date 2018/4/2
  */
 @Configuration
 @EnableAuthorizationServer
