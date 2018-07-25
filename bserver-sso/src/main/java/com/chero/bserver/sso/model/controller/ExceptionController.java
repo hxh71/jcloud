@@ -21,7 +21,7 @@ public class ExceptionController {
 
     @ExceptionHandler(Exception.class)
     // 能捕获service 和 controller里的异常
-    @ResponseStatus(value = HttpStatus.BAD_GATEWAY)   // 可以直接放到异常类上reason能直接改变返回的信息
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)   // 可以直接放到异常类上reason能直接改变返回的信息
     public Object handleException(Exception exception, HttpServletRequest request) {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("status", 1);

@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class ClientServiceImpl implements ClientService {
 
     @Autowired
-    ClientDAO clientDAO;
+    private ClientDAO clientDAO;
 
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {

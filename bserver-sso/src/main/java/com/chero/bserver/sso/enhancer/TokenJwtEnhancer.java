@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by hxh on 2018/5/25.
+ * token增强
+ * @author hxh
+ * @date 2018/5/25
  */
 public class TokenJwtEnhancer implements org.springframework.security.oauth2.provider.token.TokenEnhancer {
 

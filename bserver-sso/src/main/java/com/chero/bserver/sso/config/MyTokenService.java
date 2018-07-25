@@ -55,6 +55,7 @@ public class MyTokenService implements ResourceServerTokenServices {
         }
 
         OAuth2Authentication result = tokenStore.readAuthentication(accessToken);
+
         if (result == null) {
             // in case of race condition
             throw new InvalidTokenException("Invalid access token: " + accessTokenValue);

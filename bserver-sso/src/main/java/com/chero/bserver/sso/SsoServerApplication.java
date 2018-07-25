@@ -13,7 +13,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 /**
  * Created by hxh on 2018/4/4.
  */
-@EnableJpaAuditing
 @SpringBootApplication(scanBasePackages = {"com.chero"}, exclude = {RepositoryRestMvcAutoConfiguration.class})/*, OAuth2AutoConfiguration.class*/
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages= {"com.chero.client.test"})

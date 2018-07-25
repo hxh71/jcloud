@@ -23,7 +23,7 @@ public class TimeAspect {
         }
 
         Object object = pjp.proceed();
-        System.out.println("时间切片 耗时：" + (new Date().getTime()));
+        System.out.println("时间切片 耗时：" + System.currentTimeMillis());
         return object;
     }
 }

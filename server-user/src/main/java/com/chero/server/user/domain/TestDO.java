@@ -4,6 +4,7 @@ import com.chero.server.user.annotation.TimestampFormat;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLUpdate;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;

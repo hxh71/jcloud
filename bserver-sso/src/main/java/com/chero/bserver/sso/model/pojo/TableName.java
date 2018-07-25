@@ -1,7 +1,9 @@
 package com.chero.bserver.sso.model.pojo;
 
 /**
- * Created by hxh on 2018/5/11.
+ *
+ * @author hxh
+ * @date 2018/5/11
  */
 public class TableName {
 

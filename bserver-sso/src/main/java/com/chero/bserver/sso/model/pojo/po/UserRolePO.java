@@ -1,6 +1,6 @@
 package com.chero.bserver.sso.model.pojo.po;
 
-import com.chero.bserver.sso.model.pojo.po.embed.UserRolePK;
+import com.chero.bserver.sso.model.pojo.po.id.embed.UserRolePK;
 import lombok.Data;
 
 import javax.persistence.EmbeddedId;

@@ -1,13 +1,13 @@
-package com.chero.bserver.sso.model.pojo.po;
+package com.chero.bserver.sso.model.pojo.po.base;
 
 /**
- * 基础DO
+ * 基础PO
  * Created by hxh on 2018/3/31.
  */
 
-import com.chero.bserver.sso.util.IDUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -15,22 +15,15 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
-//@SQLDelete(sql = "update demo set deleted = 1 where id = ?")
-//@Where(clause = "deleted = 0")
 @Data
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BasePO {
-    @Id
-    protected String id;
+@Where(clause = "deleted = 0")
+public abstract class BaseWithoutIdPO {
 
-    public BasePO() {
-        this.id = IDUtil.gen18Id();
-    }
     /**
      * 创建用户
      */

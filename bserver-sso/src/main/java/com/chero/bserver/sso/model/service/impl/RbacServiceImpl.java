@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author hxh
- * @date 2018/7/4
- */
+
 @Service("rbacService") // 这个一定要加，要不然无法在access()spel中识别
 public class RbacServiceImpl implements RbacService {
 
@@ -30,7 +27,6 @@ public class RbacServiceImpl implements RbacService {
             // 读取用户所拥有权限的所有URL
             Set<String> urls = new HashSet<>();
 
-
             for (String url :
                     urls) {
                 if (antPathMatcher.match(url, request.getRequestURI())) {
@@ -39,8 +35,8 @@ public class RbacServiceImpl implements RbacService {
                 }
             }
 
-            return hasPermission;
+            return true;
         }
-        return hasPermission;
+        return true;
     }
 }

@@ -1,29 +1,41 @@
-package com.chero.bserver.sso.model.pojo.po;
+package com.chero.bserver.sso.model.pojo.po.base;
 
-/**
- * 基础PO
- * Created by hxh on 2018/3/31.
- */
 
+import com.chero.bserver.sso.config.BaseEntityAuditListener;
+import com.chero.bserver.sso.util.IDUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.util.Date;
 
-//@SQLDelete(sql = "update demo set deleted = 1 where id = ?")
-//@Where(clause = "deleted = 0")
+
+/**
+ * 基础PO
+ *
+ * @author hxh
+ * @date 2018/3/31
+ */
 @Data
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public abstract class BaseWithoutIdPO {
+@EntityListeners(BaseEntityAuditListener.class)
 
+//@EntityListeners(AuditingEntityListener.class)
+public abstract class BaseSnowflakeIdPO {
+
+    @Id
+    @GenericGenerator(name = "snowFlakeId",
+            strategy = "com.chero.bserver.sso.model.pojo.po.id.strategy.SnowflakeId")
+    @GeneratedValue(generator = "snowFlakeId")
+    protected Long id;
+    
     /**
      * 创建用户
      */

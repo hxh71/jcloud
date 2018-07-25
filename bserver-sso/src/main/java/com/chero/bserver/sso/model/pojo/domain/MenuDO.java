@@ -1,6 +1,6 @@
 package com.chero.bserver.sso.model.pojo.domain;
 
-import com.chero.bserver.sso.model.pojo.po.BaseWithoutIdPO;
+import com.chero.bserver.sso.model.pojo.po.base.BaseWithoutIdPO;
 import lombok.Data;
 
 @Data

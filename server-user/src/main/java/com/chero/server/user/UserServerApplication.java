@@ -2,7 +2,7 @@ package com.chero.server.user;
 
 import com.chero.server.user.convert.WxMappingJackson2HttpMessageConverter;
 import com.google.gson.JsonObject;
-import feign.codec.Decoder;
+//import feign.codec.Decoder;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -32,8 +32,8 @@ import java.util.List;
 @Configuration
 @ComponentScan
 @EnableJpaAuditing
-@EnableDiscoveryClient
-@EnableFeignClients(basePackages= {"com.chero.client.user"})
+//@EnableDiscoveryClient
+//@EnableFeignClients(basePackages= {"com.chero.client.user"})
 @SpringBootApplication(scanBasePackages = {"com.chero"}, exclude = {RepositoryRestMvcAutoConfiguration.class})
 //@EnableAutoConfiguration(exclude = RepositoryRestMvcAutoConfiguration.class) 防止data-rest注入/{repository}/{id}/{property}],methods=[GET]，作用同上
 
@@ -47,12 +47,12 @@ public class UserServerApplication {
 		restTemplate.getMessageConverters().add(new WxMappingJackson2HttpMessageConverter());
 		return restTemplate;
 	}
-	@Bean
-	public Decoder feignDecoder(){
-		WxMappingJackson2HttpMessageConverter wxConverter = new WxMappingJackson2HttpMessageConverter();
-		ObjectFactory<HttpMessageConverters> objectFactory = () -> new HttpMessageConverters(wxConverter);
-		return new SpringDecoder(objectFactory);
-	}
+//	@Bean
+//	public Decoder feignDecoder(){
+//		WxMappingJackson2HttpMessageConverter wxConverter = new WxMappingJackson2HttpMessageConverter();
+//		ObjectFactory<HttpMessageConverters> objectFactory = () -> new HttpMessageConverters(wxConverter);
+//		return new SpringDecoder(objectFactory);
+//	}
 	public static void main(String[] args) {
 //		DateFormat df = new SimpleDateFormat("yyyy-MM");
 //		Date date = new Date();

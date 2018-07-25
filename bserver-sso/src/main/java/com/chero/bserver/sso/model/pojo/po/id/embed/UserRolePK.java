@@ -1,4 +1,4 @@
-package com.chero.bserver.sso.model.pojo.po.embed;
+package com.chero.bserver.sso.model.pojo.po.id.embed;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

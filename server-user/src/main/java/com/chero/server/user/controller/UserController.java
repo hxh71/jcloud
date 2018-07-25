@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UserController {
 
-
-
 	@Autowired
 	private UserService user_modelService;
 	@PostMapping

@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.provider.approval.InMemoryApprovalStore;
 import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.DefaultUserAuthenticationConverter;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
@@ -68,7 +69,9 @@ public class TokenStoreConfig {
          */
         @Bean
         public TokenStore jwtTokenStore() {
-            return new JwtTokenStore(jwtAccessTokenConverter());
+            JwtTokenStore jwtTokenStore = new JwtTokenStore(jwtAccessTokenConverter());
+//            jwtTokenStore.setApprovalStore(new InMemoryApprovalStore());  觉得这个可能是用来存储token用的e
+            return jwtTokenStore;
         }
 
         /**

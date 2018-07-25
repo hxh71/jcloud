@@ -18,21 +18,29 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<artifactId>spring-boot-starter-logging</artifactId>-->
-                    <!--<groupId>org.springframework.boot</groupId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-data-commons</artifactId>
+                    <groupId>org.springframework.data</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-data-commons</artifactId>
+                    <groupId>org.springframework.data</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--数据库日志-->
         <dependency>
@@ -57,10 +65,10 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>-->
-        <dependency>
+      <!--  <dependency>
             <groupId>com.chero</groupId>
             <artifactId>client-user</artifactId>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 

@@ -49,7 +49,7 @@ public class IDUtil {
      * 来自于twitter项目snowflake的id产生方案，全局唯一，时间有序。
      * 64位ID (42(毫秒)+5(机器ID)+5(业务编码)+12(重复累加))
      */
-    public static String gen18Id() {
-        return String.valueOf(idWorker.nextId());
+    public static long gen18Id() {
+        return idWorker.nextId();
     }
 }

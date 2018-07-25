@@ -5,16 +5,13 @@ import com.chero.server.user.domain.UserDO;
 import com.chero.server.user.domain.WrapCountDO;
 import com.chero.server.user.domain.WrapCountPO;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.ColumnResult;
-import javax.persistence.NamedNativeQuery;
-import javax.persistence.SqlResultSetMapping;
-import javax.persistence.SqlResultSetMappings;
 import java.util.List;
 
 public interface TestRepository extends JpaRepository<TestDO, String>, JpaSpecificationExecutor<UserDO> {
@@ -44,6 +41,13 @@ public interface TestRepository extends JpaRepository<TestDO, String>, JpaSpecif
             "WHERE i != 0 " +
             "GROUP BY uid", nativeQuery = true)  // group by会分类形成List
     List<NameOnly> count3();
+
+
+    @javax.transaction.Transactional
+    @Modifying
+    @Query(value = "UPDATE TestDO t SET t.s = ?1 WHERE t.uid = ?2")  // group by会分类形成List
+    int update(String[] s, String uid);
+
 //    TestDO (String username);
      interface NameOnly {
 //        @Value("#{target.count}")

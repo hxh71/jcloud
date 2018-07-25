@@ -1,18 +1,12 @@
 package com.chero.server.user.controller;
 
-import com.chero.client.user.UserClient;
-import com.chero.common.pojo.vo.ResultVO;
-import com.chero.common.utils.ResultVOUtil;
 import com.chero.server.user.domain.TestDO;
-import com.chero.server.user.domain.UserDO;
 import com.chero.server.user.repository.TestRepository;
 import com.chero.server.user.service.TestService;
-import com.chero.server.user.service.UserService;
-import com.chero.server.user.util.Result;
+import com.chero.server.user.util.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -23,20 +17,20 @@ import java.util.*;
 @RequestMapping("/test")
 public class TestController {
 
-    @Autowired
-    private UserClient userClient;
+    //    @Autowired
+//    private UserClient userClient;
     @Autowired
     private TestService testService;
 
-    @GetMapping("/user")
-    public String getUser() {
-        return userClient.getTestUser();
-    }
+//    @GetMapping("/user")
+//    public String getUser() {
+//        return userClient.getTestUser();
+//    }
 
-    @GetMapping("/all")
-    public Object getAll() {
-        return userClient.getTestAll();
-    }
+//    @GetMapping("/all")
+//    public Object getAll() {
+//        return userClient.getTestAll();
+//    }
 
     @RequestMapping("/date")
     public Object getDate(Bean bean) throws ParseException {
@@ -75,6 +69,13 @@ public class TestController {
 
         return testRepository.save(testDO);
     }
+
+    @RequestMapping("/daoUpdate")
+    public Object daoUpdate(TestDO testDO) {
+
+        return testRepository.update(testDO.getS(), testDO.getUid());
+    }
+
     @RequestMapping("/countDao")
     public Object countDao(TestDO testDO) {
         TestDO a = new TestDO();
@@ -82,18 +83,20 @@ public class TestController {
         Example<TestDO> example = Example.of(a);
         return testRepository.count1111(example);
     }
+
     @RequestMapping("/countDao2")
     public Object countDao2(TestDO testDO) {
 
         return testRepository.count2222();
     }
+
     @RequestMapping("/countDao3")
     public Object countDao3(TestDO testDO) {
 
         List<TestRepository.NameOnly> nameOnlyList = testRepository.count3();
         List<TestRepository.NameOnlyImpl> list = new ArrayList<>();
-        for (TestRepository.NameOnly nameOnly:
-             nameOnlyList) {
+        for (TestRepository.NameOnly nameOnly :
+                nameOnlyList) {
             System.out.println("!!!!!!uid");
 //            System.out.println(nameOnly.getU());
             TestRepository.NameOnlyImpl nameOnlyImpl = new TestRepository.NameOnlyImpl();
@@ -106,8 +109,10 @@ public class TestController {
     @RequestMapping("/findDao")
     public Object findDao() {
 
-        return testRepository.findOne("6d129201-dec1-46cb-928b-a79ae1acd573");
+        Optional<TestDO> op = testRepository.findById("6d129201-dec1-46cb-928b-a79ae1acd573");
+        return op.orElse(null);
     }
+
     @RequestMapping("/findDao1")
     public Object findDao1() {
         TestDO testDO = new TestDO();
@@ -115,6 +120,7 @@ public class TestController {
         Example<TestDO> example = Example.of(testDO);
         return testRepository.findOne(example);
     }
+
     @RequestMapping("/findDao2")
     public Object findDao2() {
         TestDO testDO = new TestDO();
@@ -138,10 +144,38 @@ public class TestController {
         testService.testException();
         return new Object();
     }
+
     @RequestMapping("/exception/controller")
     public Object testException2() {
 
         throw new RuntimeException("控制异常抛出");
+//        return new Object();
+    }
+
+    @RequestMapping("/getTestValue")
+    public Object getTestValue() {
+
+        return TestLogUtil.getTest();
+//        return new Object();
+    }
+
+    @RequestMapping("/getTestValue2")
+    public Object getTestValue2() {
+
+        return LogUtil2.addLog("aa");
+//        return new Object();
+    }
+    @RequestMapping("/getTestValue21")
+    public Object getTestValue21() {
+
+        return LogUtil21.addLog("aa");
+//        return new Object();
+    }
+
+    @RequestMapping("/getTestValue3")
+    public Object getTestValue3() {
+
+        return LogUtil3.addLog("aa");
 //        return new Object();
     }
 }

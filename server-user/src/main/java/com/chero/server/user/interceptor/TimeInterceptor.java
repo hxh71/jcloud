@@ -21,7 +21,7 @@ public class TimeInterceptor implements HandlerInterceptor {
         System.out.println("拦截前");
         System.out.println("类名" + ((HandlerMethod)handler).getBean().getClass().getName());
         System.out.println("方法名" + ((HandlerMethod)handler).getMethod().getName());
-        request.setAttribute("startTime", new Date().getTime());
+        request.setAttribute("startTime", System.currentTimeMillis());
         return true;
     }
 
@@ -30,7 +30,7 @@ public class TimeInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("拦截后（无异常）");
         Long start  = (Long) request.getAttribute("startTime");
-        System.out.println("拦截器耗时:" + (new Date().getTime() - start));
+        System.out.println("拦截器耗时:" + (System.currentTimeMillis() - start));
     }
 
     @Override

@@ -1,18 +1,15 @@
 package com.chero.bserver.sso.config;
 
-//import com.chero.bserver.sso.service.ClientDetailsServiceImpl;
-import com.chero.bserver.sso.model.service.ClientService;
+
 import com.chero.bserver.sso.model.service.UserService;
-import com.chero.bserver.sso.model.service.impl.ClientServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import com.chero.bserver.sso.model.service.ClientService;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager;
@@ -20,7 +17,6 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,8 +50,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()");  // /oauth/token_key 输入client信息从这个接口中获取  如果不设置默认是denyAll()为关闭
-                                                    // {"alg": "HMACSHA256",
-                                                    // "value": "JwtChero"}
+                                                // {"alg": "HMACSHA256",
+                                                // "value": "JwtChero"}
         security.tokenKeyAccess("isAuthenticated()");
 //        security.
         // 我要访问我的认证服务器tokenkey时 需要身份认证
