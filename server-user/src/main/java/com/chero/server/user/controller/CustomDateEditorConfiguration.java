@@ -25,20 +25,20 @@ public class CustomDateEditorConfiguration {
         requestMappingHandlerAdapter.setWebBindingInitializer(new CustomDateWebBindingInitializer());
 
     }
-    /**
-     * 扩展web初始化的配置
-     */
     class CustomDateWebBindingInitializer implements WebBindingInitializer {
 
         /**
-         * @see org.springframework.web.bind.support.WebBindingInitializer#initBinder(org.springframework.web.bind.WebDataBinder,
-         *      org.springframework.web.context.request.WebRequest)
+         * 扩展web初始化的配置
          */
         @Override
-        public void initBinder(WebDataBinder binder, WebRequest request) {
+        public void initBinder(WebDataBinder binder) {
             binder.registerCustomEditor(Date.class, new CustomDateEditor(true, 13));
         }
 
+//        @Override
+//        public void initBinder(WebDataBinder binder, WebRequest request) {
+//            binder.registerCustomEditor(Date.class, new CustomDateEditor(true, 13));
+//        }
     }
     /**
      * 扩展类型转换

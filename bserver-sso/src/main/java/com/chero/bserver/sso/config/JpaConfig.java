@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.security.Principal;
+import java.util.Optional;
 
 /**
  * @author hxh
@@ -28,6 +29,18 @@ public class JpaConfig {
 
     @Bean
     public AuditorAware<String> auditorProvider() {
+//        return new AuditorAware<String>() {
+//            @Override
+//            public Optional<String> getCurrentAuditor() {
+//                Object obj =  UserUtil.getCurrentUser();
+//               if (obj instanceof UserDO) {
+//                    return Optional.of(((UserDO) obj).getUserId());
+//               } else {
+//                   return Optional.of(obj.toString());
+//               }
+//                return null;
+//            }
+//        };
         return () ->  {
            Object obj =  UserUtil.getCurrentUser();
            if (obj instanceof UserDO) {

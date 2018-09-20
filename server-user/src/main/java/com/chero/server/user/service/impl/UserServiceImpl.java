@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, timeout = 36000, rollbackFor = Exception.class)
     public void delete(String id) {
-        userRepository.deleteById(id);
+//        userRepository.delete(id);
     }
 
     @Override
@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDO get(String id) throws Exception {
-        Optional<UserDO> op = userRepository.findById(id);
-        return op.orElse(null);
+//        return userRepository.findOne(id);
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override

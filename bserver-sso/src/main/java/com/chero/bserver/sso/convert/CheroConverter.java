@@ -13,7 +13,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by hxh on 2018/5/21.
+ *
+ * @author hxh
+ * @date 2018/5/21
  */
 public abstract class CheroConverter<I , O> extends Converter<I, O> {
     Class<I> clazzI;

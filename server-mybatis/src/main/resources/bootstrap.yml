@@ -1,0 +1,102 @@
+#####################################Eureka配置#############################
+eureka:
+  client:
+    service-url:
+      defaultZone: http://hxh:hxh@localhost:8761/eureka/
+#spring:
+#  application:
+#    name: product
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: CONFIG
+#      profile: dev
+#####################################端口配置#############################
+server:
+  port: 8003
+#####################################Spring配置#############################
+spring:
+  application:
+    name: test
+  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: net.sf.log4jdbc.DriverSpy #日志
+#    username: huangxuhuai
+#    password: huangxuhuai
+#    url: jdbc:mysql://127.0.0.1:3306/cherouser?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/ssotest?characterEncoding=utf-8&useSSL=false
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: false
+    #    create (创建新的实体表，会将原来的删除)/ update（更新）
+    #     create-drop(程序停止，删表)/ none (默认什么也不做)
+    #     validate(验证类的属性是否和表结构一致，否则保存)
+#security:
+#  oauth2:
+#    resource:
+#      filter-order: 3
+
+
+#####################################日志配置#############################
+
+logging:
+#  #指定日志文件目录（默认日志名为spring.log）
+#  path: D:/hxhlog
+#  #指定日志文件目录、名字(建议使用绝对路径)
+  file: D:/log/spring.log
+##指定控制台输出日志的pattern
+##指定日志文件输出日志的pattern
+#  pattern:
+#    console: %-20(%d{yyyy-MM-dd HH:mm:ss.SSS} [Thread]) %-5level %logger{80} - %msg%n
+#    file: %-20(%d{yyyy-MM-dd HH:mm:ss.SSS} [Thread]) %-5level %logger{80} - %msg%n
+#  level: debug
+#  config: classpath:log4j2-spring.xml
+##指定某个类的日志级别
+##  level:
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:repository/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.chero.server.user.domain
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    # Sequence序列接口实现类配置
+    #key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+    #逻辑删除配置
+    logic-delete-value: -1
+    logic-not-delete-value: 0
+    #自定义填充策略接口实现
+    #meta-object-handler: com.baomidou.springboot.xxx
+    #自定义SQL注入器
+    sql-injector: com.baomidou.mybatisplus.repository.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
+

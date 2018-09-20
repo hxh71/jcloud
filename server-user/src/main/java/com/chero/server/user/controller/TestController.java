@@ -1,6 +1,7 @@
 package com.chero.server.user.controller;
 
 import com.chero.server.user.domain.TestDO;
+import com.chero.server.user.domain.TestProjection;
 import com.chero.server.user.repository.TestRepository;
 import com.chero.server.user.service.TestService;
 import com.chero.server.user.util.*;
@@ -93,24 +94,25 @@ public class TestController {
     @RequestMapping("/countDao3")
     public Object countDao3(TestDO testDO) {
 
-        List<TestRepository.NameOnly> nameOnlyList = testRepository.count3();
-        List<TestRepository.NameOnlyImpl> list = new ArrayList<>();
-        for (TestRepository.NameOnly nameOnly :
-                nameOnlyList) {
-            System.out.println("!!!!!!uid");
-//            System.out.println(nameOnly.getU());
-            TestRepository.NameOnlyImpl nameOnlyImpl = new TestRepository.NameOnlyImpl();
-            BeanUtils.copyProperties(nameOnly, nameOnlyImpl);
-            list.add(nameOnlyImpl);
-        }
+        List<TestProjection> nameOnlyList = testRepository.count3();
+//        List<TestRepository.NameOnlyImpl> list = new ArrayList<>();
+//        for (TestProjection nameOnly :
+//                nameOnlyList) {
+//            System.out.println("!!!!!!uid");
+////            System.out.println(nameOnly.getU());
+//            TestRepository.NameOnlyImpl nameOnlyImpl = new TestRepository.NameOnlyImpl();
+//            BeanUtils.copyProperties(nameOnly, nameOnlyImpl);
+//            list.add(nameOnlyImpl);
+//        }
         return nameOnlyList;
+//        return null;
     }
 
     @RequestMapping("/findDao")
     public Object findDao() {
 
-        Optional<TestDO> op = testRepository.findById("6d129201-dec1-46cb-928b-a79ae1acd573");
-        return op.orElse(null);
+//        return testRepository.findOne("6d129201-dec1-46cb-928b-a79ae1acd573");
+        return null;
     }
 
     @RequestMapping("/findDao1")
@@ -177,5 +179,12 @@ public class TestController {
 
         return LogUtil3.addLog("aa");
 //        return new Object();
+    }
+
+
+    @RequestMapping("/getDate11")
+    public Object getTeDATEstValue() {
+        return testRepository.getTList();
+
     }
 }

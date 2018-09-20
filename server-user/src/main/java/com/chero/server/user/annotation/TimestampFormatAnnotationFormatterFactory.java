@@ -45,7 +45,7 @@ public class TimestampFormatAnnotationFormatterFactory extends EmbeddedValueReso
     protected TimestampFormatter getFormatter(TimestampFormat annotation, Class<?> fieldType) {
         TimestampFormatter timestampFormatter = new TimestampFormatter();
         timestampFormatter.setLength(annotation.value());
-        System.out.println("！！！！！！！！！！！！！！！！！！！！！！！！！！" + this.FIELD_TYPES);
+//        System.out.println("！！！！！！！！！！！！！！！！！！！！！！！！！！" + this.FIELD_TYPES);
         return timestampFormatter;
     }
     private class TimestampFormatter implements org.springframework.format.Formatter<Date>,Serializable {

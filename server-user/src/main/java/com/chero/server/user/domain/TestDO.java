@@ -39,5 +39,7 @@ public class TestDO extends BaseDO{
 
 	private Integer i;
 
+	private Date date;
+
 
 }

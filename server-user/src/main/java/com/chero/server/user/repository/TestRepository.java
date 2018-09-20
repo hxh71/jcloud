@@ -1,9 +1,6 @@
 package com.chero.server.user.repository;
 
-import com.chero.server.user.domain.TestDO;
-import com.chero.server.user.domain.UserDO;
-import com.chero.server.user.domain.WrapCountDO;
-import com.chero.server.user.domain.WrapCountPO;
+import com.chero.server.user.domain.*;
 import lombok.Data;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,11 +9,16 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 public interface TestRepository extends JpaRepository<TestDO, String>, JpaSpecificationExecutor<UserDO> {
 
     TestDO findAllBySLike(String[] str);
+
+
+    @Query("SELECT t FROM TestDO t WHERE t.createTime > current_timestamp  ")
+    List<TestDO> getTList();
 
 
     @Query("SELECT " +
@@ -36,11 +38,11 @@ public interface TestRepository extends JpaRepository<TestDO, String>, JpaSpecif
     List<WrapCountPO> count2222();
 
     @Query(value = "SELECT " +
-            "s, testa, testb, uid " +    // 实体类
-            "FROM test " +
+            "t.uid AS uid2, t.testa AS testa0, t.testb AS testb1 " +    // 实体类
+            "FROM test t " +
             "WHERE i != 0 " +
             "GROUP BY uid", nativeQuery = true)  // group by会分类形成List
-    List<NameOnly> count3();
+    List<TestProjection> count3();
 
 
     @javax.transaction.Transactional
@@ -55,7 +57,7 @@ public interface TestRepository extends JpaRepository<TestDO, String>, JpaSpecif
         String[] getS();
         Long getTesta();
         String getTestb();
-        String getV();
+        String getUid();
 }
     @Data
     class NameOnlyImpl {
