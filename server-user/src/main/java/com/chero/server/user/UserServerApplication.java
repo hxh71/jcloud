@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -26,13 +27,11 @@ import java.util.Date;
 import java.util.List;
 
 @Configuration
-@ComponentScan
 @EnableJpaAuditing
 //@EnableDiscoveryClient
 //@EnableFeignClients(basePackages= {"com.chero.client.user"})
 @SpringBootApplication(scanBasePackages = {"com.chero"}, exclude = {RepositoryRestMvcAutoConfiguration.class})
 //@EnableAutoConfiguration(exclude = RepositoryRestMvcAutoConfiguration.class) 防止data-rest注入/{repository}/{id}/{property}],methods=[GET]，作用同上
-
 public class UserServerApplication {
 	@Autowired
 	private RestTemplateBuilder builder;

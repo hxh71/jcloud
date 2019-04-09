@@ -5,7 +5,7 @@ import com.chero.common.pojo.domain.UserDO;
 import com.chero.common.pojo.dto.CreateUserDTO;
 import com.chero.common.pojo.dto.UserDTO;
 import com.chero.common.pojo.vo.UserMeSaveVO;
-import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 

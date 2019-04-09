@@ -19,13 +19,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ComponentScan
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages= {"com.chero.client.user"})
 @SpringBootApplication(scanBasePackages = {"com.chero"}, exclude = {RepositoryRestMvcAutoConfiguration.class})
 @MapperScan(basePackages = {"com.chero.server.user.repository"})
 //@EnableAutoConfiguration(exclude = RepositoryRestMvcAutoConfiguration.class) 防止data-rest注入/{repository}/{id}/{property}],methods=[GET]，作用同上
-
 public class MybatisServerApplication {
 	@Autowired
 	private RestTemplateBuilder builder;

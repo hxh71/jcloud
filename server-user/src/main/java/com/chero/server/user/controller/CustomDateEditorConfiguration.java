@@ -30,15 +30,15 @@ public class CustomDateEditorConfiguration {
         /**
          * 扩展web初始化的配置
          */
-        @Override
-        public void initBinder(WebDataBinder binder) {
-            binder.registerCustomEditor(Date.class, new CustomDateEditor(true, 13));
-        }
-
 //        @Override
-//        public void initBinder(WebDataBinder binder, WebRequest request) {
+//        public void initBinder(WebDataBinder binder) {
 //            binder.registerCustomEditor(Date.class, new CustomDateEditor(true, 13));
 //        }
+
+        @Override
+        public void initBinder(WebDataBinder binder, WebRequest request) {
+            binder.registerCustomEditor(Date.class, new CustomDateEditor(true, 13));
+        }
     }
     /**
      * 扩展类型转换

@@ -14,7 +14,9 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by hxh on 2018/6/5.
+ *
+ * @author hxh
+ * @date 2018/6/5
  */
 public class TimestampFormatAnnotationFormatterFactory extends EmbeddedValueResolutionSupport
         implements AnnotationFormatterFactory<TimestampFormat> {
@@ -63,15 +65,16 @@ public class TimestampFormatAnnotationFormatterFactory extends EmbeddedValueReso
             if (this.length != null) {
                 switch (this.length) {
                     case MILLISECOND:
-                        if (value.length() != 13) {
-                            throw new IllegalArgumentException(value + " 不支持非13位");
-                        }
+//                        if (value.length() != 13) {
+//                            throw new IllegalArgumentException(value + " 不支持非13位");
+//                        }
+//                        timeStamp = Long.valueOf(value);
                         timeStamp = Long.valueOf(value);
                         break;
                     case SECOND:
-                        if (value.length() != 10) {
-                            throw new IllegalArgumentException(value + " 不支持非10位");
-                        }
+//                        if (value.length() != 10) {
+//                            throw new IllegalArgumentException(value + " 不支持非10位");
+//                        }
                         timeStamp = Long.valueOf(value) * 1000;
                         break;
                     default:

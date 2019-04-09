@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDO get(String id) throws Exception {
-//        return userRepository.findOne(id);
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findOne(id);
+//        return userRepository.findById(id).orElse(null);
     }
 
     @Override

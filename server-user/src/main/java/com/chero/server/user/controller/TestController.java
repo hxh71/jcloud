@@ -43,6 +43,11 @@ public class TestController {
 //		return date.getTime();
         return bean;
     }
+    @RequestMapping("/getString")
+    public Object getString(String a, @RequestParam("b") String b) throws ParseException {
+
+        return a+b;
+    }
 
     @RequestMapping("/list")
     public Object getList(@RequestBody DataBean data) throws ParseException {
