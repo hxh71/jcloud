@@ -1,6 +1,7 @@
 package com.chero.server.user.config;
 
 import com.chero.server.user.filter.TimeFilter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

@@ -1,7 +1,7 @@
 package com.chero.server.user.config;
 
 import com.chero.server.user.annotation.TimestampFormatAnnotationFormatterFactory;
-import com.chero.server.user.interceptor.TimeInterceptor;
+//import com.chero.server.user.interceptor.TimeInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -29,7 +29,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TimeInterceptor());
+//        registry.addInterceptor(new TimeInterceptor());
 //        registry.-5
 
 //        super.addInterceptors(registry);

@@ -16,6 +16,7 @@ public class TimeInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        Logger
         // handler 无法拦截所需要参数
         System.out.println("拦截前");
         System.out.println("类名" + ((HandlerMethod)handler).getBean().getClass().getName());

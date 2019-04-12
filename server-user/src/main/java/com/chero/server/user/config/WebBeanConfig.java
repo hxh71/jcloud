@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by hxh on 2018/6/13.
  */
-@Configuration
+//@Configuration
 public class WebBeanConfig {
 
     @Bean
